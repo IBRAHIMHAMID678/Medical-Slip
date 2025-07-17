@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Treatment Reference Slip</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!--suppress CssUnusedSymbol -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+            position: relative;
+            display: inline-block;
+            margin: 0 auto;
+            width: 60%;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: auto;
+        }
+
+        .logo.left {
+            left: 150px;
+        }
+
+        .logo.right {
+            right: 150px;
+            left: auto;
+        }
+
+        table.container {
+            margin: 0 auto;
+            width: 60%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 50px;
+        }
+
+        th,
+        td {
+            border: 2px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .patient-image {
+            width: 100px;
+            height: auto;
+            float: right;
+            margin-top: -50px;
+        }
+
+        .signature {
+            text-align: center;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<img class="logo left" src="https://ntc.netrootstech.co.uk/wp-content/uploads/2022/12/NTC-LOGO-.png"
+     alt="Left Image">
+<h2>National Telecommunication Corporation</h2>
+<img class="logo right"
+     src="https://seeklogo.com/images/M/ministry-of-information-technology-moitt-logo-DB53BE9080-seeklogo.com.png"
+     alt="Right Image">
+<p style="font-weight: bold;">Headquarters: G-5/2, Islamabad</p>
+<h3 style="font-weight: bold;">Medical slip</h3>
+
+<table class="container">
+    <tr>
+        <th>Employee's Name</th>
+        <td th:text="${employeeName}">John Doe</td>
+    </tr>
+    <tr>
+        <th>Personal Number</th>
+        <td th:text="${personalNumber}">12345</td>
+    </tr>
+    <tr>
+        <th>Designation</th>
+        <td th:text="${designation}">Doctor</td>
+    </tr>
+    <tr>
+        <th>Scale</th>
+        <td th:text="${scale}">Grade A</td>
+    </tr>
+    <tr>
+        <th>Department</th>
+        <td th:text="${department}">Internal Medicine</td>
+    </tr>
+    <tr>
+        <th>Place of Posting</th>
+        <td th:text="${placeOfPosting}">Main Hospital</td>
+    </tr>
+    <tr>
+        <th>Patient's Name</th>
+        <td th:text="${patientName}">Jane Smith</td>
+    </tr>
+    <tr>
+        <th>NIC No</th>
+        <td th:text="${nicNo}">1234567890</td>
+    </tr>
+    <tr>
+        <th>Age</th>
+        <td th:text="${age}">45</td>
+    </tr>
+    <tr>
+        <th>Relation with Employee</th>
+        <td th:text="${relation}">Spouse</td>
+    </tr>
+    <tr>
+        <th>Entitlement</th>
+        <td th:text="${entitlement}">Medical Checkup</td>
+    </tr>
+</table>
+<p class="signature">Signature of Authorized Officer</p>
+</body>
+
+</html>

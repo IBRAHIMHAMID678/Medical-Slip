@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Patient</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 10px;
+        }
+
+        h2 {
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+            position: relative;
+            display: inline-block;
+            margin: 0 auto;
+            width: 60%;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: auto;
+        }
+
+        .logo.left {
+            left: 150px;
+        }
+
+        .logo.right {
+            right: 150px;
+            left: auto;
+        }
+
+        .form-container {
+            text-align: left;
+            max-width: 800px; /* Adjusted width */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 30px auto; /* Center the container */
+            min-height: 700px; /* Adjusted height */
+        }
+
+        .form-group {
+            display: flex;
+            flex-wrap: wrap; /* Allow flex items to wrap */
+            margin-bottom: 30px; /* Increased bottom margin for better spacing */
+        }
+
+        .form-group label {
+            flex: 0 0 150px;
+            margin-right: 20px;
+        }
+
+        .form-group input,
+        .form-group select {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: calc(50% - 90px); /* Adjusted width */
+            margin-right: 30px; /* Adjusted margin */
+        }
+
+        .form-group input:last-child,
+        .form-group select:last-child {
+            margin-right: 0; /* Remove right margin for the last input/select */
+        }
+
+        .form-group select {
+            height: 40px;
+        }
+
+        .form-group input[type="file"] {
+            margin-top: 5px; /* Add margin to separate from other inputs */
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px; /* Adjusted padding */
+            cursor: pointer;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+
+<body>
+<img class="logo left" src="https://ntc.netrootstech.co.uk/wp-content/uploads/2022/12/NTC-LOGO-.png" alt="Left Image">
+<h2>National Telecommunication Corporation</h2>
+<img class="logo right" src="https://seeklogo.com/images/M/ministry-of-information-technology-moitt-logo-DB53BE9080-seeklogo.com.png" alt="Right Image">
+<h5 style="font-weight: bold;">Headquarters: G-5/2, Islamabad</h5>
+<h3 style="font-weight: bold;">PATIENT REGISTRATION FORM</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2"> <!-- Adjusted column width -->
+            <div class="form-container">
+                <form method="post" th:object="${patient}" th:action="@{/patientdetails}">
+                    <div class="form-group">
+                        <label for="employeeName">Employee's Name</label>
+                        <input type="text" id="employeeName" name="employeeName" th:field="*{employeeName}"  placeholder="Enter Employees Name" required>
+                        <label for="personalNumber">Personal Number</label>
+                        <input type="text" class="form-control" id="personalNumber" name="personalNumber" th:field="*{personalNumber}" placeholder="Enter personal number">
+                    </div>
+                    <div class="form-group">
+                        <label for="designation">Designation</label>
+                        <input type="text" class="form-control" id="designation" name="designation" th:field="*{designation}" placeholder="Enter designation">
+                        <label for="scale">Scale</label>
+                        <select class="form-control" id="scale" name="scale" th:field="*{scale}">
+                            <option value="Grade A" th:selected="${patient.scale == 'Grade A'}">Grade A</option>
+                            <option value="Grade B" th:selected="${patient.scale == 'Grade B'}">Grade B</option>
+                            <option value="Grade C" th:selected="${patient.scale == 'Grade C'}">Grade C</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="department">Department</label>
+                        <input type="text" class="form-control" id="department" name="department" th:field="*{department}" placeholder="Enter department">
+                        <label for="placeOfPosting">Place of Posting</label>
+                        <input type="text" class="form-control" id="placeOfPosting" name="placeOfPosting" th:field="*{placeOfPosting}" placeholder="Enter place of posting">
+                    </div>
+                    <div class="form-group">
+                        <label for="patientName">Patient's Name</label>
+                        <input type="text" class="form-control" id="patientName" name="patientName" th:field="*{patientName}" placeholder="Enter patient name">
+                        <label for="nicNo">NIC No</label>
+                        <input type="text" class="form-control" id="nicNo" name="nicNo" th:field="*{nicNo}" placeholder="Enter NIC number">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" class="form-control" id="age" name="age" th:field="*{age}" placeholder="Enter age">
+                        <label for="relation">Relation with Employee</label>
+                        <input type="text" class="form-control" id="relation" name=" relationWithEmployee" th:field="*{ relationWithEmployee}" placeholder="Enter relation with employee">
+                    </div>
+                    <div class="form-group">
+                        <label for="entitlement">Entitlement</label>
+                        <input type="text" class="form-control" id="entitlement" name="entitlement" th:field="*{entitlement}" placeholder="Enter entitlement">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
